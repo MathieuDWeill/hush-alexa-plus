@@ -225,6 +225,13 @@ touches:
 
 ## Honest limits
 
+For an English video with local macOS speech and no API key, run `node studio/english.mjs`.
+It uses the installed Daniel voice at 155 words per minute, English narration and captions,
+and renders in an isolated temporary workspace. The output is
+`submissions/hush-alexa-plus-demo-en.mp4`; the French version is preserved. Intermediate
+English assets are kept in the ignored `studio/out-en/` directory. No global audio acceleration
+is applied; the assembler still enforces the three-minute cap.
+
 - Simulated devices: there is no public self-serve way to register a third-party MCP server
   with a real Alexa+ device yet, so the surface is simulated and the protocol is real. See
   `submission/friction-log.md`.
@@ -237,3 +244,7 @@ touches:
 
 MIT - see `LICENSE`. Contributions welcome; the policy in `src/domain/triage.ts` is the
 part worth arguing about.
+
+## English demo video
+
+[Watch the English demo (2:38)](https://youtu.be/vBLdlksUVwc).

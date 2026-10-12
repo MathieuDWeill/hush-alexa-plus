@@ -108,3 +108,10 @@ as tool feedback too:
   burned captions into the DOM and used the **`rubberband` CLI** for clean time-compression of
   the voice to fit the 3:00 cap. Looping a still image over its own audio (`-loop 1` +
   `-t`) and concat-copy beats any complex `filter_complex` graph on this build.
+
+## English narration with local macOS speech
+
+The English demo uses the installed macOS Daniel voice via `say`, at 155 words per minute.
+This avoids the unavailable Edge synthesis endpoint and requires no paid service or API key.
+The English storyboard is shorter and assembled at 1x speed; captions and titles are English.
+`studio/english.mjs` renders in isolation and preserves the existing French media.

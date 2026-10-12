@@ -11,4 +11,5 @@ submissions/*.mov
 
 # Demo video studio
 studio/out/
+studio/out-en/
 .venv-studio/

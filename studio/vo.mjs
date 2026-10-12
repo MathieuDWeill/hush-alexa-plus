@@ -37,6 +37,7 @@ export function splitSentences(text) {
 
 function which() {
   if (chosen) return chosen;
+  if (process.env.VOICE_BACKEND === "mac") return (chosen = "mac");
   try {
     execFileSync(EDGE_PY, ["--voice", EDGE_VOICE, "--text", "ping", "--write-media", "/tmp/hush-edge-probe.mp3"], { stdio: "pipe", timeout: 25000 });
     const sz = existsSync("/tmp/hush-edge-probe.mp3") ? readFileSync("/tmp/hush-edge-probe.mp3").length : 0;
@@ -49,6 +50,12 @@ function which() {
 
 function synthEdge(text, file) {
   execFileSync(EDGE_PY, ["--voice", EDGE_VOICE, "--rate", EDGE_RATE, "--text", text, "--write-media", file], { stdio: "pipe", timeout: 60000 });
+}
+
+function synthMac(text, file) {
+  const wav = `${file}.aiff`;
+  execFileSync("say", ["-v", process.env.MAC_VOICE || "Daniel", "-r", process.env.MAC_RATE || "155", "-o", wav, text], { stdio: "pipe", timeout: 60000 });
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-i", wav, "-c:a", "libmp3lame", "-q:a", "2", file], { stdio: "pipe" });
 }
 
 function synthGtts(text, file) {
@@ -84,14 +91,14 @@ function chunkText(text, max) {
 export async function generateVoice({ force = false, log = console.log } = {}) {
   ensureDirs();
   const backend = which();
-  log(`voice backend: ${backend}${backend === "edge" ? ` (${EDGE_VOICE})` : ` (Google ${GT_LANG} read-aloud)`}`);
+  log(`voice backend: ${backend}${backend === "mac" ? ` (${process.env.MAC_VOICE || "Daniel"}, macOS)` : backend === "edge" ? ` (${EDGE_VOICE})` : ` (Google ${GT_LANG} read-aloud)`}`);
   const results = [];
   for (const beat of BEATS) {
     const mp3 = join(OUT, `${beat.id}.mp3`);
     if (!force && existsSync(mp3) && readFileSync(mp3).length > 500) {
       log(`vo cached ${beat.id}`);
     } else {
-      (backend === "edge" ? synthEdge : synthGtts)(beat.vo, mp3);
+      (backend === "mac" ? synthMac : backend === "edge" ? synthEdge : synthGtts)(beat.vo, mp3);
       log(`vo wrote   ${beat.id} ${ffprobeDuration(mp3).toFixed(2)}s`);
     }
     results.push({ id: beat.id, file: mp3, backend, seconds: ffprobeDuration(mp3), cues: splitSentences(beat.vo) });
