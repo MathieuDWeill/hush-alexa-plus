@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.DS_Store
+
+# Submission exports
+submissions/*.zip
+submissions/*.mp4
+submissions/*.mov
+
+
+# Demo video studio
+studio/out/
+.venv-studio/

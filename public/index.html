@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hush - the interruption brain for Alexa+</title>
+    <meta
+      name="description"
+      content="Hackathon demo: a self-hosted MCP server that decides what a household assistant should say out loud, whisper, hold, or silently handle."
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark"></span>
+        <div>
+          <h1>Hush</h1>
+          <p>the interruption brain for Alexa+</p>
+        </div>
+      </div>
+      <div class="status">
+        <span class="pill" id="session-pill"><i class="dot"></i><span id="session-text">connecting to MCP...</span></span>
+        <span class="clock">home clock <b id="clock">--:--</b></span>
+      </div>
+    </header>
+
+    <nav class="scenarios" id="scenarios" aria-label="Demo scenarios"></nav>
+
+    <main>
+      <section class="col home">
+        <h2>Household context</h2>
+        <p class="scene-line" id="scene-line">loading scene...</p>
+        <ul class="people" id="people"></ul>
+        <div class="subpanel">
+          <h3>Next natural break</h3>
+          <p id="next-break">-</p>
+        </div>
+        <div class="controls">
+          <button id="triage-all" class="primary">Triage every signal</button>
+          <button id="play" class="accent">&#9654; Play the scene</button>
+          <button id="stop" class="danger" hidden>&#9632; Stop scene</button>
+          <div class="row">
+            <button id="clock-btn">+15 min</button>
+            <button id="digest-btn">Deliver digest</button>
+            <button id="reset-btn">Reset take</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="col surface">
+        <h2>Simulated Alexa+ surface</h2>
+        <p class="beat" id="beat">Hush decides what Alexa+ says out loud.</p>
+        <div class="device" id="device">
+          <!-- the label is set by app.js on every state change: idle -> quiet/held/whispering/speaking -->
+          <div class="ring" id="ring">idle</div>
+          <p class="device-state" id="device-state">quiet - nothing worth saying</p>
+        </div>
+        <div class="transcript" id="transcript" role="log" aria-live="polite" aria-label="Simulated Alexa+ transcript">
+          <p class="empty" id="transcript-empty">No scene running. Press <b>Play the scene</b>.</p>
+        </div>
+      </section>
+
+      <section class="col ledger">
+        <h2>Decision ledger</h2>
+        <p class="hint">click a row to re-read its scoring over MCP</p>
+        <ul id="ledger"></ul>
+        <div class="queue">
+          <h3>Held back <span id="queue-count">0</span></h3>
+          <ul id="queue"></ul>
+        </div>
+      </section>
+    </main>
+
+    <section class="console">
+      <div class="console-head">
+        <h2>MCP traffic</h2>
+        <p>every panel above is rendered from JSON-RPC calls to <code>POST /mcp</code></p>
+      </div>
+      <pre id="console-log"></pre>
+    </section>
+
+    <footer>
+      <p>
+        Hush is a local Streamable HTTP MCP server (tools + resources + prompts) with a simulated Alexa+ surface.
+        Routes: <b>speak_now</b> · <b>whisper_display</b> · <b>hold_for_digest</b> · <b>silent_log</b>.
+      </p>
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

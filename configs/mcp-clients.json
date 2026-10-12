@@ -1,0 +1,28 @@
+{
+  "_comment": "Hush exposes a stateful Streamable HTTP MCP endpoint. These are the client snippets we actually used while testing. Replace the port if you set PORT.",
+  "claude-desktop": {
+    "mcpServers": {
+      "hush": {
+        "type": "http",
+        "url": "http://localhost:8787/mcp"
+      }
+    }
+  },
+  "claude-cli": "claude mcp add --transport http hush http://localhost:8787/mcp",
+  "typescript-sdk-client": {
+    "install": "npm install @modelcontextprotocol/sdk",
+    "code": [
+      "import { Client } from \"@modelcontextprotocol/sdk/client/index.js\";",
+      "import { StreamableHTTPClientTransport } from \"@modelcontextprotocol/sdk/client/streamableHttp.js\";",
+      "const client = new Client({ name: \"my-alexa-plus-sim\", version: \"1.0.0\" });",
+      "await client.connect(new StreamableHTTPClientTransport(new URL(\"http://localhost:8787/mcp\")));",
+      "const triage = await client.callTool({ name: \"evaluate_interruption\", arguments: { event_id: \"evt-grandma\" } });",
+      "console.log(triage.structuredContent.decision.route);"
+    ]
+  },
+  "raw-json-rpc": {
+    "1-initialize": "curl -i -X POST http://localhost:8787/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{},\"clientInfo\":{\"name\":\"curl\",\"version\":\"0\"}}}'",
+    "2-note": "copy the Mcp-Session-Id response header, then send notifications/initialized with it",
+    "3-call": "curl -s -X POST http://localhost:8787/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -H 'Mcp-Session-Id: <id>' -d '{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\",\"params\":{\"name\":\"route_pending_events\",\"arguments\":{}}}'"
+  }
+}

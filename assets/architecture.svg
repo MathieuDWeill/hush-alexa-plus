@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 560" width="1240" height="560" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7f959f" />
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#55d6d0" />
+    </marker>
+  </defs>
+
+  <rect width="1240" height="560" fill="#0b1015" />
+  <text x="40" y="46" fill="#eaf2f5" font-size="24" font-weight="700">Hush - the interruption brain for Alexa+</text>
+  <text x="40" y="72" fill="#9fb2bc" font-size="15">One self-hosted MCP server decides what the household hears. Protocol real, surface simulated.</text>
+
+  <rect x="40" y="104" width="256" height="336" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" />
+  <text x="62" y="134" fill="#9fb2bc" font-size="13" letter-spacing="1.5">HOUSEHOLD SIGNALS</text>
+  <g fill="#eaf2f5" font-size="15">
+    <text x="62" y="166">Doorbell camera</text>
+    <text x="62" y="196">Gate intercom</text>
+    <text x="62" y="226">Oven / dishwasher</text>
+    <text x="62" y="256">Water leak sensor</text>
+    <text x="62" y="286">School portal</text>
+    <text x="62" y="316">Calendar</text>
+    <text x="62" y="346">Smoke detector</text>
+  </g>
+  <text x="62" y="386" fill="#9fb2bc" font-size="13">plus context: who is home, what</text>
+  <text x="62" y="404" fill="#9fb2bc" font-size="13">they are doing, and when the</text>
+  <text x="62" y="422" fill="#9fb2bc" font-size="13">household next has a natural break</text>
+
+  <rect x="396" y="104" width="424" height="336" rx="12" fill="rgba(85,214,208,0.06)" stroke="rgba(85,214,208,0.5)" />
+  <text x="416" y="134" fill="#55d6d0" font-size="13" letter-spacing="1.5">HUSH MCP SERVER - POST /mcp</text>
+  <text x="416" y="156" fill="#eaf2f5" font-size="14">Streamable HTTP, stateful sessions</text>
+
+  <rect x="416" y="172" width="384" height="140" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" />
+  <text x="434" y="198" fill="#eaf2f5" font-size="14" font-weight="700">interruption policy engine</text>
+  <g fill="#9fb2bc" font-size="12.5">
+    <text x="434" y="220">attention = urgency, relevance,</text>
+    <text x="434" y="238">freshness, actionability</text>
+    <text x="434" y="260">cost = scene tolerance + recipient focus state</text>
+    <text x="434" y="278">safety override, repeat escalation</text>
+    <text x="434" y="296">digest at the next natural break</text>
+  </g>
+
+  <g font-size="13">
+    <rect x="416" y="328" width="184" height="48" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" />
+    <text x="508" y="348" fill="#eaf2f5" text-anchor="middle" font-weight="700">13 tools</text>
+    <text x="508" y="365" fill="#9fb2bc" text-anchor="middle">triage, focus, clock</text>
+
+    <rect x="616" y="328" width="184" height="48" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" />
+    <text x="708" y="348" fill="#eaf2f5" text-anchor="middle" font-weight="700">3 resources</text>
+    <text x="708" y="365" fill="#9fb2bc" text-anchor="middle">audit per decision id</text>
+
+    <rect x="416" y="384" width="184" height="48" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" />
+    <text x="508" y="404" fill="#eaf2f5" text-anchor="middle" font-weight="700">2 prompts</text>
+    <text x="508" y="421" fill="#9fb2bc" text-anchor="middle">three_minute_demo</text>
+
+    <rect x="616" y="384" width="184" height="48" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" />
+    <text x="708" y="404" fill="#eaf2f5" text-anchor="middle" font-weight="700">typed output</text>
+    <text x="708" y="421" fill="#9fb2bc" text-anchor="middle">structuredContent</text>
+  </g>
+
+  <rect x="900" y="104" width="300" height="336" rx="12" fill="rgba(255,143,107,0.05)" stroke="rgba(255,143,107,0.4)" />
+  <text x="922" y="134" fill="#ff8f6b" font-size="13" letter-spacing="1.5">SIMULATED ALEXA+ SURFACE</text>
+  <g font-size="14">
+    <rect x="922" y="152" width="256" height="46" rx="8" fill="rgba(255,143,107,0.14)" />
+    <text x="936" y="172" fill="#ff8f6b" font-weight="700">speak_now</text>
+    <text x="936" y="189" fill="#9fb2bc" font-size="12.5">voice, on the right surfaces</text>
+    <rect x="922" y="206" width="256" height="46" rx="8" fill="rgba(85,214,208,0.14)" />
+    <text x="936" y="226" fill="#55d6d0" font-weight="700">whisper_display</text>
+    <text x="936" y="243" fill="#9fb2bc" font-size="12.5">one card, no voice</text>
+    <rect x="922" y="260" width="256" height="46" rx="8" fill="rgba(169,139,255,0.16)" />
+    <text x="936" y="280" fill="#a98bff" font-weight="700">hold_for_digest</text>
+    <text x="936" y="297" fill="#9fb2bc" font-size="12.5">batched at a natural break</text>
+    <rect x="922" y="314" width="256" height="46" rx="8" fill="rgba(116,132,142,0.2)" />
+    <text x="936" y="334" fill="#b6c4cd" font-weight="700">silent_log</text>
+    <text x="936" y="351" fill="#9fb2bc" font-size="12.5">the home acts, nobody hears</text>
+  </g>
+  <text x="922" y="392" fill="#9fb2bc" font-size="12.5">the UI is itself an MCP client:</text>
+  <text x="922" y="410" fill="#9fb2bc" font-size="12.5">every panel renders from JSON-RPC</text>
+
+  <path d="M296 272 L396 272" stroke="#7f959f" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+  <text x="300" y="258" fill="#9fb2bc" font-size="12">signals + context</text>
+  <path d="M820 236 L900 236" stroke="#55d6d0" stroke-width="2" marker-end="url(#arrowTeal)" fill="none" />
+  <text x="860" y="222" fill="#55d6d0" font-size="12" text-anchor="middle">Decision</text>
+  <path d="M900 336 C 862 400 848 400 820 356" stroke="#7f959f" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arrow)" fill="none" />
+  <text x="826" y="466" fill="#9fb2bc" font-size="12">explain_decision, resources/read</text>
+
+  <text x="40" y="490" fill="#eaf2f5" font-size="15" font-weight="700">Weeknight at 18:47 - eight signals, four interruptions</text>
+  <text x="40" y="514" fill="#9fb2bc" font-size="14">held or silent: dishwasher, school email, courier, screen time - spoken: doorbell, oven, Nanou, smoke detector</text>
+  <text x="40" y="538" fill="#9fb2bc" font-size="13">MIT licensed - npm install &amp;&amp; npm run dev - http://localhost:8787</text>
+</svg>
